@@ -96,7 +96,9 @@ module.exports = withBundleAnalyzer({
     return config
   },
   experimental: {
-    scrollRestoration: true,
+    scrollRestoration: true
+  },
+  experimental: {
     runtime: 'nodejs'
   },
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
