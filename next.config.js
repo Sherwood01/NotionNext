@@ -112,9 +112,3 @@ module.exports = withBundleAnalyzer({
     THEMES: themes
   }
 })
-// next.config.js
-require('./polyfills')
-
-module.exports = {
-  //...
-}
