@@ -96,7 +96,8 @@ module.exports = withBundleAnalyzer({
     return config
   },
   experimental: {
-    scrollRestoration: true
+    scrollRestoration: true,
+    runtime: 'nodejs'
   },
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
     // 导出时 忽略/pages/sitemap.xml.js ， 否则报错getServerSideProps
