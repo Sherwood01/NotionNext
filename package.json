@@ -4,7 +4,7 @@
   "homepage": "https://github.com/tangly1024/NotionNext.git",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=20 <24"
   },
   "repository": {
     "type": "git",
@@ -102,8 +102,7 @@
     "jest-junit": "^16.0.0"
   },
   "resolutions": {
-    "axios": ">=0.21.1"
-  },
+    "axios": ">=0.21.1"  },
   "bugs": {
     "url": "https://github.com/tangly/NotionNext/issues",
     "email": "tlyong1992@hotmail.com"
