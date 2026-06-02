@@ -5,11 +5,7 @@
   "homepage": "https://github.com/tangly1024/NotionNext.git",
   "license": "MIT",
   "engines": {
-<<<<<<< HEAD
     "node": ">=20 <24"
-=======
-    "node": ">=20 <25"
->>>>>>> e087fdc5bc0a499358122f27ce8e8fab95b78632
   },
   "repository": {
     "type": "git",
@@ -134,9 +130,6 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "resolutions": {
-<<<<<<< HEAD
-    "axios": ">=0.21.1"  },
-=======
     "axios": ">=0.21.1",
     "esbuild": "^0.25.0",
     "flatted": "^3.4.2",
@@ -148,7 +141,6 @@
     "tmp": "^0.2.6",
     "uuid": "^11.1.1"
   },
->>>>>>> e087fdc5bc0a499358122f27ce8e8fab95b78632
   "bugs": {
     "url": "https://github.com/tangly/NotionNext/issues",
     "email": "tlyong1992@hotmail.com"

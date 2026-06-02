@@ -221,6 +221,17 @@ const nextConfig = {
           source: '/feed',
           destination: '/rss/feed.xml',
           permanent: true
+        },
+        // 兼容旧的 /zh-CN/ 前缀路径，新版本使用 /zh/ 作为语言前缀
+        {
+          source: '/zh-CN/:path*',
+          destination: '/:path*',
+          permanent: true
+        },
+        {
+          source: '/zh-CN',
+          destination: '/',
+          permanent: true
         }
       ]
     },
