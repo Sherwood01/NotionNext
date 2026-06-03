@@ -16,13 +16,15 @@ const themes = scanSubdirectories(path.resolve(__dirname, 'themes'))
 const locales = (function () {
   // 根据BLOG_NOTION_PAGE_ID 检查支持多少种语言数据.
   // 支持如下格式配置多个语言的页面id xxx,zh:xxx,en:xxx
-  const langs = []
+  // 注意: 使用 'default' 作为 defaultLocale 以避免 Next.js 为默认语言生成带前缀的路径
+  // （Next.js 14.x 中，默认语言带前缀的路径在预渲染时会触发 React error #130）
+  const langs = ['default']
   if (BLOG.NOTION_PAGE_ID.indexOf(',') > 0) {
     const siteIds = BLOG.NOTION_PAGE_ID.split(',')
     for (const siteId of siteIds) {
       const prefix = extractLangPrefix(siteId)
       // 如果包含前缀 例如 zh , en 等
-      if (prefix) {
+      if (prefix && prefix !== BLOG.LANG) {
         if (!langs.includes(prefix)) {
           langs.push(prefix)
         }
@@ -181,7 +183,7 @@ const nextConfig = {
   i18n: process.env.EXPORT
     ? undefined
     : {
-      defaultLocale: BLOG.LANG,
+      defaultLocale: 'default',
       // 支持的所有多语言,按需填写即可
       locales: locales
     },
