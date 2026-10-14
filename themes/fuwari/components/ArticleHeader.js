@@ -38,12 +38,6 @@ const ArticleHeader = ({ post }) => {
       {siteConfig('FUWARI_ARTICLE_META', true, CONFIG) && (
         <div className='text-sm text-[var(--fuwari-muted)] flex flex-wrap items-center gap-2'>
           <SmartLink href={getArchiveHref(post.publishDay, router)} className='fuwari-link'>{post.publishDay}</SmartLink>
-          {post.lastEditedDay && (
-            <>
-              <span>·</span>
-              <SmartLink href={getArchiveHref(post.lastEditedDay, router)} className='fuwari-link'>{post.lastEditedDay}</SmartLink>
-            </>
-          )}
           {post.category && (
             <>
               <span>·</span>

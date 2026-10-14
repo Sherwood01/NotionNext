@@ -41,10 +41,6 @@ export default function ArticleInfo (props) {
                         </SmartLink>
                     </span>
                     <span className='mr-2'>|</span>
-                    <span className='mx-2  dark:text-gray-500'>
-                        {locale.COMMON.LAST_EDITED_TIME}: {post?.lastEditedDay}
-                    </span>
-                    <span className='mr-2'>|</span>
                     <span className="hidden busuanzi_container_page_pv font-light mr-2">
                         <i className='mr-1 fas fa-eye' />
                         &nbsp;

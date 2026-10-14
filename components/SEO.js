@@ -185,7 +185,6 @@ const SEO = props => {
       {meta?.type === 'Post' && (
         <>
           <meta property='article:published_time' content={meta.publishDay} />
-          <meta property='article:modified_time' content={meta.lastEditedDay} />
           <meta property='article:author' content={AUTHOR} />
           <meta property='article:section' content={category} />
           <meta property='article:tag' content={keywords} />
@@ -255,7 +254,7 @@ const generateStructuredData = (meta, siteInfo, url, image, author) => {
       image: image,
       url: url,
       datePublished: meta.publishDay,
-      dateModified: meta.lastEditedDay || meta.publishDay,
+      dateModified: meta.publishDay,
       author: {
         '@type': 'Person',
         name: author
