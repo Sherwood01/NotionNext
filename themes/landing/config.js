@@ -1,10 +1,10 @@
 const CONFIG = {
 
   LANDING_HEADER_BUTTON_1_TITLE: 'Github开源',
-  LANDING_HEADER_BUTTON_1_URL: 'https://github.com/tangly1024/NotionNext',
+  LANDING_HEADER_BUTTON_1_URL: 'https://github.com/Sherwood01/NotionNext',
 
   LANDING_HEADER_BUTTON_2_TITLE: '作者博客',
-  LANDING_HEADER_BUTTON_2_URL: 'https://blog.tangly1024.com/',
+  LANDING_HEADER_BUTTON_2_URL: 'https://blog.notion.xwqin.com/',
 
   // 首页大图英雄板块
   LANDING_HERO_TITLE_1: 'NotionNext',
@@ -58,7 +58,7 @@ const CONFIG = {
   LANDING_TESTIMONIALS_WORD: '“ 感谢大佬的方法。之前尝试过Super、Potion等国外的第三方平台，实现效果一般，个性化程度远不如这个方法，已经用起来了！ “',
 
   LANDING_POST_REDIRECT_ENABLE: process.env.NEXT_PUBLIC_POST_REDIRECT_ENABLE || false, // 是否开启文章地址重定向 ； 用于迁移旧网站域名
-  LANDING_POST_REDIRECT_URL: process.env.NEXT_PUBLIC_POST_REDIRECT_URL || 'https://blog.tangly1024.com', // 重定向网站地址
+  LANDING_POST_REDIRECT_URL: process.env.NEXT_PUBLIC_POST_REDIRECT_URL || 'https://blog.notion.xwqin.com', // 重定向网站地址
 
   LANDING_PRICING_TITLE: '价格表',
   LANDING_PRICING_P: 'NotionNext开源免费，此处仅演示订阅付费功能！请勿购买！',
@@ -73,13 +73,13 @@ const CONFIG = {
   LANDING_PRICING_2_PRICE: '$9.9/月',
   LANDING_PRICING_2_CONTENT: '项目源代码,部署教程,长期技术答疑,代码升级合并,内部社群',
   LANDING_PRICING_2_BUTTON: '立即购买',
-  LANDING_PRICING_2_URL: 'https://tangly1024.lemonsqueezy.com/checkout/buy/0adb9153-0799-4f51-91aa-1f06391ea4e0',
+  LANDING_PRICING_2_URL: 'https://xwqin.lemonsqueezy.com/checkout/buy/0adb9153-0799-4f51-91aa-1f06391ea4e0',
 
   LANDING_PRICING_3_TITLE: '企业版',
   LANDING_PRICING_3_PRICE: '$59/月',
   LANDING_PRICING_3_CONTENT: '项目源代码,部署教程,VIP技术咨询,代码升级合并,内部社群,定制功能开发,SEO优化',
   LANDING_PRICING_3_BUTTON: '立即购买',
-  LANDING_PRICING_3_URL: 'https://tangly1024.lemonsqueezy.com/checkout/buy/df924d66-09dc-42a4-a632-a6b0c5cc4f28',
+  LANDING_PRICING_3_URL: 'https://xwqin.lemonsqueezy.com/checkout/buy/df924d66-09dc-42a4-a632-a6b0c5cc4f28',
 
   LANDING_NEWSLETTER: process.env.NEXT_PUBLIC_THEME_LANDING_NEWSLETTER || false // 是否开启邮件订阅 请先配置mailchimp功能 https://docs.tangly1024.com/article/notion-next-mailchimp
 }

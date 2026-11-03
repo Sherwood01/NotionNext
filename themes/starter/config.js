@@ -17,7 +17,7 @@ const CONFIG = {
   STARTER_HERO_BUTTON_1_URL:
     'https://docs.tangly1024.com/article/vercel-deploy-notion-next', // 英雄区按钮
   STARTER_HERO_BUTTON_2_TEXT: '在Github上关注', // 英雄区按钮
-  STARTER_HERO_BUTTON_2_URL: 'https://github.com/tangly1024/NotionNext', // 英雄区按钮
+  STARTER_HERO_BUTTON_2_URL: 'https://github.com/Sherwood01/NotionNext', // 英雄区按钮
   STARTER_HERO_BUTTON_2_ICON: '/images/starter/github.svg', // 英雄区按钮2的图标，不需要则留空
 
   // 英雄区配图，如需隐藏，改为空值即可 ''
@@ -41,7 +41,7 @@ const CONFIG = {
   STARTER_FEATURE_1_TITLE_1: '免费且开源', // 特性1
   STARTER_FEATURE_1_TEXT_1: '项目源码在Github上完全开放共享，遵循MIT协议', // 特性1
   STARTER_FEATURE_1_BUTTON_TEXT: '了解更多', // 特性1
-  STARTER_FEATURE_1_BUTTON_URL: 'https://github.com/tangly1024/NotionNext', // 特性1
+  STARTER_FEATURE_1_BUTTON_URL: 'https://github.com/Sherwood01/NotionNext', // 特性1
 
   STARTER_FEATURE_2_TITLE_1: '多种主题定制', // 特性2
   STARTER_FEATURE_2_TEXT_1: '数十种主题,适用于不同场景，总有一款适合你', // 特性2
@@ -87,7 +87,7 @@ const CONFIG = {
   STARTER_PRICING_1_FEATURES: '所有的主题,免费更新,帮助手册', // 英文逗号隔开
   STARTER_PRICING_1_BUTTON_TEXT: '立即购买',
   STARTER_PRICING_1_BUTTON_URL:
-    'https://tangly1024.lemonsqueezy.com/checkout/buy/c1a38a65-362e-44c5-8065-733fee39eb54',
+    'https://xwqin.lemonsqueezy.com/checkout/buy/c1a38a65-362e-44c5-8065-733fee39eb54',
 
   STARTER_PRICING_2_TAG: '推荐',
   STARTER_PRICING_2_TITLE: '基础版',
@@ -98,7 +98,7 @@ const CONFIG = {
   STARTER_PRICING_2_FEATURES: '包含入门版,项目源码,内部社群,技术咨询,SEO优化', // 英文逗号隔开
   STARTER_PRICING_2_BUTTON_TEXT: '立即购买',
   STARTER_PRICING_2_BUTTON_URL:
-    'https://tangly1024.lemonsqueezy.com/checkout/buy/590ad70a-c3b7-4caf-94ec-9ca27bde06d4',
+    'https://xwqin.lemonsqueezy.com/checkout/buy/590ad70a-c3b7-4caf-94ec-9ca27bde06d4',
 
   STARTER_PRICING_3_TITLE: '高级版',
   STARTER_PRICING_3_PRICE: '59.9',
@@ -108,7 +108,7 @@ const CONFIG = {
   STARTER_PRICING_3_FEATURES: '包含基础版,功能定制开发', // 英文逗号隔开
   STARTER_PRICING_3_BUTTON_TEXT: '立即购买',
   STARTER_PRICING_3_BUTTON_URL:
-    'https://tangly1024.lemonsqueezy.com/checkout/buy/df924d66-09dc-42a4-a632-a6b0c5cc4f28',
+    'https://xwqin.lemonsqueezy.com/checkout/buy/df924d66-09dc-42a4-a632-a6b0c5cc4f28',
 
   // 首页用户测评区块
   STARTER_TESTIMONIALS_ENABLE: true, // 测评区块开关
@@ -202,13 +202,13 @@ const CONFIG = {
   STARTER_TEAM_TITLE: '团队成员',
   STARTER_TEAM_TEXT_1: '我们的开发者团队',
   STARTER_TEAM_TEXT_2:
-    'NotionNext 由众多开源技术爱好者们共同合作完成，感谢每一位<a className="underline" href="https://github.com/tangly1024/NotionNext/graphs/contributors">贡献者</a>',
+    'NotionNext 由众多开源技术爱好者们共同合作完成，感谢每一位<a className="underline" href="https://github.com/Sherwood01/NotionNext/graphs/contributors">贡献者</a>',
 
   // 这里不支持CONFIG和环境变量，需要一一修改此处代码。
   STARTER_TEAM_ITEMS: [
     {
       STARTER_TEAM_ITEM_AVATAR:
-        'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa06c61bb-980e-4180-bc18-c15f92c78bb4%2Ftangly1024.jpg?table=collection&id=8e7acf17-de09-4fa1-abde-b5b80ad4a813&t=8e7acf17-de09-4fa1-abde-b5b80ad4a813&width=100&cache=v2',
+        'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa06c61bb-980e-4180-bc18-c15f92c78bb4%2Fxwqin.jpg?table=collection&id=8e7acf17-de09-4fa1-abde-b5b80ad4a813&t=8e7acf17-de09-4fa1-abde-b5b80ad4a813&width=100&cache=v2',
       STARTER_TEAM_ITEM_NICKNAME: 'Tangly',
       STARTER_TEAM_ITEM_DESCRIPTION: 'Developer'
     },
@@ -244,7 +244,7 @@ const CONFIG = {
   STARTER_CONTACT_LOCATION_TITLE: '我们的位置',
   STARTER_CONTACT_LOCATION_TEXT: '中国，福建',
   STARTER_CONTACT_EMAIL_TITLE: '我们如何帮助您？',
-  STARTER_CONTACT_EMAIL_TEXT: 'mail@tangly1024.com',
+  STARTER_CONTACT_EMAIL_TEXT: 'mail@notion.xwqin.com',
 
   // 嵌入外部表单
   STARTER_CONTACT_MSG_EXTERNAL_URL: 'https://noteforms.com/forms/yfctc7', // 基于NoteForm创建，将留言数据存在Notion中
@@ -372,7 +372,7 @@ const CONFIG = {
   STARTER_CTA_BUTTON_TEXT: '开始体验',
 
   STARTER_POST_REDIRECT_ENABLE: true, // 默認開啟重定向
-  STARTER_POST_REDIRECT_URL: 'https://blog.tangly1024.com', // 重定向域名
+  STARTER_POST_REDIRECT_URL: 'https://blog.notion.xwqin.com', // 重定向域名
   STARTER_NEWSLETTER: process.env.NEXT_PUBLIC_THEME_STARTER_NEWSLETTER || false // 是否开启邮件订阅 请先配置mailchimp功能 https://docs.tangly1024.com/article/notion-next-mailchimp
 }
 export default CONFIG

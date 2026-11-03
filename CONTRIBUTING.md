@@ -72,8 +72,8 @@ The configuration priority is:
 2. Environment Variables
 3. blog.config.js (lowest)
 
-[fork]: https://github.com/tangly1024/NotionNext/fork
-[pr]: https://github.com/tangly1024/NotionNext/compare
+[fork]: https://github.com/Sherwood01/NotionNext/fork
+[pr]: https://github.com/Sherwood01/NotionNext/compare
 [next.js]: https://github.com/vercel/next.js
 [themes-dir]: themes
 [example]: themes/example

@@ -13,14 +13,14 @@ You can set up your personal website in just a few minutes. Here is the link to 
 # NotionNext
 
 <p>
-  <a aria-label="GitHub commit activity" href="https://github.com/tangly1024/NotionNext/commits/main" title="GitHub commit activity">
-    <img src="https://img.shields.io/github/commit-activity/m/tangly1024/NotionNext?style=for-the-badge"/>
+  <a aria-label="GitHub commit activity" href="https://github.com/Sherwood01/NotionNext/commits/main" title="GitHub commit activity">
+    <img src="https://img.shields.io/github/commit-activity/m/Sherwood01/NotionNext?style=for-the-badge"/>
   </a>
-  <a aria-label="GitHub contributors" href="https://github.com/tangly1024/NotionNext/graphs/contributors" title="GitHub contributors">
-    <img src="https://img.shields.io/github/contributors/tangly1024/NotionNext?color=orange&style=for-the-badge"/>
+  <a aria-label="GitHub contributors" href="https://github.com/Sherwood01/NotionNext/graphs/contributors" title="GitHub contributors">
+    <img src="https://img.shields.io/github/contributors/Sherwood01/NotionNext?color=orange&style=for-the-badge"/>
   </a>
   <a aria-label="Build status" href="#" title="Build status">
-    <img src="https://img.shields.io/github/deployments/tangly1024/NotionNext/Production?logo=Vercel&style=for-the-badge"/>
+    <img src="https://img.shields.io/github/deployments/Sherwood01/NotionNext/Production?logo=Vercel&style=for-the-badge"/>
   </a>
   <a aria-label="Powered by Vercel" href="https://vercel.com?utm_source=Craigary&utm_campaign=oss" title="Powered by Vercel">
     <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" height="28"/>
@@ -37,11 +37,11 @@ A static blog system built with NextJS and Notion API, deployed on Vercel. Desig
 
 ## Preview
 
-Live Demo：[https://preview.tangly1024.com/](https://preview.tangly1024.com/) ，Project supports switching between multiple themes. Can't find a theme you like? How about [contributing](/CONTRIBUTING.md) one?~
+Live Demo：[https://preview.notion.xwqin.com/](https://preview.notion.xwqin.com/) ，Project supports switching between multiple themes. Can't find a theme you like? How about [contributing](/CONTRIBUTING.md) one?~
 
 | Next | Medium | Hexo | Fukasawa |
 |--|--|--|--|
-| <img src='./docs/theme-next.png' width='300'/> [NEXT](https://preview.tangly1024.com/?theme=next)  | <img src='./docs/theme-medium.png' width='300'/> [MEDIUM](https://preview.tangly1024.com/?theme=medium) | <img src='./docs/theme-hexo.png' width='300'/> [HEXO](https://preview.tangly1024.com/?theme=hexo) | <img src='./docs/theme-fukasawa.png' width='300'/> [FUKASAWA](https://preview.tangly1024.com/?theme=fukasawa) |
+| <img src='./docs/theme-next.png' width='300'/> [NEXT](https://preview.notion.xwqin.com/?theme=next)  | <img src='./docs/theme-medium.png' width='300'/> [MEDIUM](https://preview.notion.xwqin.com/?theme=medium) | <img src='./docs/theme-hexo.png' width='300'/> [HEXO](https://preview.notion.xwqin.com/?theme=hexo) | <img src='./docs/theme-fukasawa.png' width='300'/> [FUKASAWA](https://preview.notion.xwqin.com/?theme=fukasawa) |
 
 ## Acknowledgements
 
@@ -55,7 +55,7 @@ Special thanks to Craig Hart for initiating the Nobelium project.
 
 This project exists thanks to all the people who contribute.
 
-[![Contributors](https://contrib.rocks/image?repo=tangly1024/NotionNext)](https://github.com/tangly1024/NotionNext/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=Sherwood01/NotionNext)](https://github.com/Sherwood01/NotionNext/graphs/contributors)
 
 ## Technologies Used
 
