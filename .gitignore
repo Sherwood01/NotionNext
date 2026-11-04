@@ -42,7 +42,7 @@ yarn-error.log*
 
 
 # sitemap
-/public/robots.txt
+# /public/robots.txt
 /public/sitemap.xml
 /public/rss/*
 /sitemap.xml

@@ -135,6 +135,14 @@ const SEO = props => {
       <meta name='author' content={AUTHOR} />
       <meta name='generator' content='NotionNext' />
 
+      {/* 大模型检索标准 llms.txt */}
+      <link
+        rel='alternate'
+        type='text/markdown'
+        href={`${LINK}/llms.txt`}
+        title='LLMs.txt'
+      />
+
       {/* 语言和地区 */}
       <meta httpEquiv='content-language' content={siteConfig('LANG')} />
       <meta name='geo.region' content={siteConfig('GEO_REGION', 'CN')} />

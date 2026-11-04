@@ -51,6 +51,13 @@ const preBuild = (function () {
     console.log('Deleted existing sitemap.xml from public directory')
   }
 
+  // 删除 public/llms.txt 文件 ； 否则会和 /pages/llms.txt.js 动态路由冲突。
+  const llmsPath = path.resolve(__dirname, 'public', 'llms.txt')
+  if (fs.existsSync(llmsPath)) {
+    fs.unlinkSync(llmsPath)
+    console.log('Deleted existing llms.txt from public directory')
+  }
+
   const sitemap2Path = path.resolve(__dirname, 'sitemap.xml')
   if (fs.existsSync(sitemap2Path)) {
     fs.unlinkSync(sitemap2Path)
