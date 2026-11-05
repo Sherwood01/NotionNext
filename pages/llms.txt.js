@@ -27,7 +27,7 @@ export const getServerSideProps = async ctx => {
 
   const title =
     siteConfig('TITLE', siteData?.siteInfo?.title, siteData?.NOTION_CONFIG) ||
-    siteConfig('AUTHOR', 'Sherwood & Sunmore', siteData?.NOTION_CONFIG)
+    siteConfig('AUTHOR', "Sunmore's Blog", siteData?.NOTION_CONFIG)
   const description =
     siteConfig(
       'DESCRIPTION',
