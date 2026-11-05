@@ -4,6 +4,7 @@ import throttle from 'lodash.throttle'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import DarkModeButton from './DarkModeButton'
+import LangSwitch from './LangSwitch'
 import Logo from './Logo'
 import { MenuListTop } from './MenuListTop'
 import RandomPostButton from './RandomPostButton'
@@ -166,9 +167,10 @@ const Header = props => {
           </div>
 
           {/* 右侧固定 */}
-          <div className='flex flex-shrink-0 justify-end items-center w-48'>
+          <div className='flex flex-shrink-0 justify-end items-center space-x-1'>
             <RandomPostButton {...props} />
             <SearchButton {...props} />
+            <LangSwitch {...props} />
             {!JSON.parse(siteConfig('THEME_SWITCH')) && (
               <div className='hidden md:block'>
                 <DarkModeButton {...props} />

@@ -90,9 +90,11 @@ export default function SlideOver(props) {
                   {/* 内容 */}
                   <div className='flex h-full flex-col overflow-y-scroll bg-white dark:bg-[#18171d] py-6 shadow-xl'>
                     <div className='relative mt-6 flex-1 flex-col space-y-3 px-4 sm:px-6 dark:text-white '>
-                      <section className='space-y-2 flex flex-col'>
+                      <section className='grid grid-cols-2 gap-2'>
                         {/* 切换深色模式 */}
                         <DarkModeBlockButton />
+                        {/* 切换多语言 */}
+                        <LangBlockButton />
                       </section>
 
                       <section className='space-y-2 flex flex-col'>
@@ -119,6 +121,30 @@ export default function SlideOver(props) {
         </div>
       </Dialog>
     </Transition.Root>
+  )
+}
+
+/**
+ * 移动端多语言切换按钮
+ * @returns {JSX.Element}
+ */
+function LangBlockButton() {
+  const { lang, changeLang } = useGlobal()
+  const isEn = lang?.toLowerCase().startsWith('en')
+
+  function handleToggleLang() {
+    changeLang(isEn ? 'zh-CN' : 'en-US')
+  }
+
+  return (
+    <button
+      onClick={handleToggleLang}
+      className={
+        'group duration-200 hover:text-white hover:shadow-md hover:bg-blue-600 flex justify-center items-center px-2 py-2 border dark:border-gray-600 bg-white dark:bg-[#1e1e1e] rounded-lg text-sm font-medium'
+      }>
+      <i className='fas fa-language mr-1.5 text-base' />
+      <span>{isEn ? 'EN / 中' : '中 / EN'}</span>
+    </button>
   )
 }
 
