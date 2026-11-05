@@ -278,6 +278,7 @@ function getTopPosts({ latestPosts, allNavPages }) {
   }
 
   // 显示包含‘推荐’标签的文章
+  const validPages = allNavPages ? [...allNavPages] : []
   let sortPosts = []
 
   // 排序方式
@@ -286,13 +287,13 @@ function getTopPosts({ latestPosts, allNavPages }) {
       siteConfig('HEO_HERO_RECOMMEND_POST_SORT_BY_UPDATE_TIME', null, CONFIG)
     )
   ) {
-    sortPosts = Object.create(allNavPages).sort((a, b) => {
+    sortPosts = validPages.sort((a, b) => {
       const dateA = new Date(a?.lastEditedDate)
       const dateB = new Date(b?.lastEditedDate)
       return dateB - dateA
     })
   } else {
-    sortPosts = Object.create(allNavPages)
+    sortPosts = validPages
   }
 
   const topPosts = []
