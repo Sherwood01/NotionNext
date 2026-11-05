@@ -1,12 +1,16 @@
 import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
 
 /**
- * 博客统计卡牌
+ * 博客统计卡牌组件
+ * 支持中英文双语自适应显示文章数、建站天数、访问量与访客数
  * @param {*} props
- * @returns
+ * @returns {JSX.Element}
  */
 export function AnalyticsCard(props) {
+  const { lang } = useGlobal()
+  const isEn = lang?.toLowerCase().startsWith('en')
   const targetDate = new Date(siteConfig('HEO_SITE_CREATE_TIME', null, CONFIG))
   const today = new Date()
   const diffTime = today.getTime() - targetDate.getTime() // 获取两个日期之间的毫秒数差值
@@ -28,7 +32,9 @@ export function AnalyticsCard(props) {
             <div className='inline'>
                 <div className='flex justify-between'>
                     <div>{siteTimeTitle}</div>
-                    <div>{diffDays} 天</div>
+                    <div>
+                      {diffDays} {isEn ? 'Days' : '天'}
+                    </div>
                 </div>
             </div>
             <div className='hidden busuanzi_container_page_pv'>

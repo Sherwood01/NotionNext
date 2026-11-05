@@ -117,17 +117,17 @@ const CONFIG = {
     }
   ],
 
-  HEO_SOCIAL_CARD: true, // 是否显示右侧，点击加入社群按钮
-  HEO_SOCIAL_CARD_TITLE_1: '交流频道',
-  HEO_SOCIAL_CARD_TITLE_2: '加入我们的社群讨论分享',
-  HEO_SOCIAL_CARD_TITLE_3: '点击加入社群',
-  HEO_SOCIAL_CARD_URL: 'https://docs.tangly1024.com/article/how-to-question',
+  HEO_SOCIAL_CARD: false, // 是否显示右侧，点击加入社群按钮（面向海外独立博客建议关闭保持清爽）
+  HEO_SOCIAL_CARD_TITLE_1: 'Community',
+  HEO_SOCIAL_CARD_TITLE_2: 'Join our discussions on AI & tech',
+  HEO_SOCIAL_CARD_TITLE_3: 'Connect Now',
+  HEO_SOCIAL_CARD_URL: 'https://notion.xwqin.com',
 
-  // 底部统计面板文案
-  HEO_POST_COUNT_TITLE: '文章数:',
-  HEO_SITE_TIME_TITLE: '建站天数:',
-  HEO_SITE_VISIT_TITLE: '访问量:',
-  HEO_SITE_VISITOR_TITLE: '访客数:',
+  // 底部统计面板文案（英文）
+  HEO_POST_COUNT_TITLE: 'Articles:',
+  HEO_SITE_TIME_TITLE: 'Online:',
+  HEO_SITE_VISIT_TITLE: 'Pageviews:',
+  HEO_SITE_VISITOR_TITLE: 'Visitors:',
 
   // *****  以下配置无效，只是预留开发 ****
   // 菜单配置
