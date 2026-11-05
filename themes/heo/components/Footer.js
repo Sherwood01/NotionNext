@@ -1,10 +1,13 @@
 import { BeiAnGongAn } from '@/components/BeiAnGongAn'
 import CopyRightDate from '@/components/CopyRightDate'
 import PoweredBy from '@/components/PoweredBy'
+import SmartLink from '@/components/SmartLink'
 import { siteConfig } from '@/lib/config'
 import SocialButton from './SocialButton'
+
 /**
- * 页脚
+ * HEO 主题页脚组件
+ * 展示社交链接、版权信息、居中合规政策导航及备案与统计信息
  * @returns
  */
 const Footer = () => {
@@ -29,10 +32,11 @@ const Footer = () => {
       {/* 底部页面信息 */}
       <div
         id='footer-bottom'
-        className='w-full h-20 flex flex-col p-3 lg:flex-row justify-between px-6 items-center bg-[#f1f3f7] dark:bg-[#21232A] border-t dark:border-t-[#3D3D3F]'>
+        className='w-full min-h-20 py-3 flex flex-col p-3 lg:flex-row justify-between px-6 items-center bg-[#f1f3f7] dark:bg-[#21232A] border-t dark:border-t-[#3D3D3F]'>
+        {/* 左侧版权信息 */}
         <div id='footer-bottom-left' className='text-center lg:text-start'>
           <PoweredBy />
-          <div className='flex gap-x-1'>
+          <div className='flex gap-x-1 justify-center lg:justify-start'>
             <CopyRightDate />
             <a
               href={'/about'}
@@ -43,7 +47,33 @@ const Footer = () => {
           </div>
         </div>
 
-        <div id='footer-bottom-right'>
+        {/* 中间合规法律政策导航（面向欧美用户标准英文） */}
+        <div
+          id='footer-bottom-center'
+          className='my-2 lg:my-0 text-center text-xs text-gray-500 dark:text-gray-400'>
+          <div className='flex flex-wrap justify-center items-center gap-x-2 gap-y-1'>
+            <SmartLink
+              href='/about'
+              className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
+              About
+            </SmartLink>
+            <span>•</span>
+            <SmartLink
+              href='/privacy-policy'
+              className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
+              Privacy Policy
+            </SmartLink>
+            <span>•</span>
+            <SmartLink
+              href='/terms-of-service'
+              className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
+              Terms of Service
+            </SmartLink>
+          </div>
+        </div>
+
+        {/* 右侧备案与统计信息 */}
+        <div id='footer-bottom-right' className='text-center lg:text-end'>
           {BEI_AN && (
             <>
               <i className='fas fa-shield-alt' />{' '}
