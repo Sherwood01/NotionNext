@@ -22,15 +22,17 @@ const FaceBookPage = dynamic(
 )
 
 /**
- * Hexo主题右侧栏
+ * HEO 主题右侧栏组件
+ * 展示博主信息、目录、最新文章列表、精选标签（文章数 >= 2）及访问统计
  * @param {*} props
  * @returns
  */
 export default function SideRight(props) {
   const { post, tagOptions, currentTag, rightAreaSlot } = props
 
-  // 只摘取标签的前60个，防止右侧过长
-  const sortedTags = tagOptions?.slice(0, 60) || []
+  // 过滤出文章数量 >= 2 的核心标签，最多取前 60 个
+  const sortedTags =
+    tagOptions?.filter(tag => (tag.count || 0) >= 2)?.slice(0, 60) || []
 
   return (
     <div id='sideRight' className='hidden xl:block w-72 space-y-4 h-full'>
