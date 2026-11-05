@@ -22,7 +22,7 @@ const CONFIG = {
   // 英雄区(首页顶部大卡)
   HEO_HERO_TITLE_1: 'Explore AI &',
   HEO_HERO_TITLE_2: 'Tech Insights',
-  HEO_HERO_TITLE_3: 'NOTION.XWQIN.COM',
+  HEO_HERO_TITLE_3: "Sunmores's Blog",
   HEO_HERO_TITLE_4: 'Featured Story',
   HEO_HERO_TITLE_5: 'Building Solo Ventures in the AI Era',
   HEO_HERO_TITLE_LINK: 'https://notion.xwqin.com',
@@ -41,13 +41,12 @@ const CONFIG = {
 
   // 右侧个人资料卡牌欢迎语，点击可自动切换
   HEO_INFOCARD_GREETINGS: [
-    '你好！我是',
-    '🔍 分享与热心帮助',
-    '🤝 专修交互与设计',
-    '🏃 脚踏实地行动派',
-    '🏠 智能家居小能手',
-    '🤖️ 数码科技爱好者',
-    '🧱 团队小组发动机'
+    'Hi! I am',
+    '🤖 AI Explorer',
+    '💻 Tech Builder',
+    '⚡ Automation Geek',
+    '✍️ Independent Writer',
+    '🚀 Digital Nomad'
   ],
 
   // 个人资料底部按钮
