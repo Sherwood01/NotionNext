@@ -1,5 +1,7 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 import TagItemMini from './TagItemMini'
@@ -12,7 +14,10 @@ import TagItemMini from './TagItemMini'
  * @constructor
  */
 const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
-  if (!posts || posts.length === 0) {
+  const { lang } = useGlobal()
+  const filteredPosts = filterPostsByLang(posts, lang)
+
+  if (!filteredPosts || filteredPosts.length === 0) {
     return <></>
   } else {
     return (
@@ -21,7 +26,7 @@ const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
           {archiveTitle}
         </div>
         <ul>
-          {posts?.map(post => {
+          {filteredPosts.map(post => {
             const showPreview =
               siteConfig('HEO_POST_LIST_PREVIEW', null, CONFIG) && post.blockMap
             if (
@@ -79,11 +84,6 @@ const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
                       <span className='menu-link '>{post.title}</span>
                     </SmartLink>
                   </div>
-
-                  {/* 摘要 */}
-                  {/* <p className="line-clamp-1 replace my-3 2xl:my-0 text-gray-700  dark:text-gray-300 text-xs font-light leading-tight">
-                                        {post.summary}
-                                    </p> */}
 
                   <div className='md:flex-nowrap flex-wrap md:justify-start inline-block'>
                     <div>

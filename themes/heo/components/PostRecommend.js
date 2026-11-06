@@ -1,6 +1,7 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 
@@ -10,12 +11,13 @@ import CONFIG from '../config'
  * @returns
  */
 export default function PostRecommend({ recommendPosts, siteInfo }) {
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
+  const filteredRecommendPosts = filterPostsByLang(recommendPosts, lang)
 
   if (
     !siteConfig('HEO_ARTICLE_RECOMMEND', null, CONFIG) ||
-    !recommendPosts ||
-    recommendPosts.length === 0
+    !filteredRecommendPosts ||
+    filteredRecommendPosts.length === 0
   ) {
     return <></>
   }
@@ -31,9 +33,8 @@ export default function PostRecommend({ recommendPosts, siteInfo }) {
       </div>
 
       {/* 文章列表 */}
-
       <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-        {recommendPosts.map(post => {
+        {filteredRecommendPosts.map(post => {
           const headerImage = post?.pageCoverThumbnail
             ? post?.pageCoverThumbnail
             : siteInfo?.pageCover

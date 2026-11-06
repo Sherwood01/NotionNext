@@ -1,5 +1,7 @@
 import LazyImage from '@/components/LazyImage'
 import SmartLink from '@/components/SmartLink'
+import { useGlobal } from '@/lib/global'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 
 /**
  * 最新文章列表
@@ -8,15 +10,16 @@ import SmartLink from '@/components/SmartLink'
  * @constructor
  */
 const LatestPostsGroup = ({ latestPosts, siteInfo }) => {
-  // 获取当前路径
+  const { lang } = useGlobal()
+  const filteredLatestPosts = filterPostsByLang(latestPosts, lang)
 
-  if (!latestPosts) {
+  if (!filteredLatestPosts || filteredLatestPosts.length === 0) {
     return <></>
   }
 
   return (
     <div className='grid grid-cols-2 gap-4'>
-      {latestPosts.map(post => {
+      {filteredLatestPosts.map(post => {
         const headerImage = post?.pageCoverThumbnail
           ? post.pageCoverThumbnail
           : siteInfo?.pageCover

@@ -1,5 +1,6 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import CONFIG from '../config'
 import BlogPostCard from './BlogPostCard'
 import BlogPostListEmpty from './BlogPostListEmpty'
@@ -14,12 +15,15 @@ import PaginationNumber from './PaginationNumber'
  * @constructor
  */
 const BlogPostListPage = ({ page = 1, posts = [], postCount, siteInfo }) => {
-  const { NOTION_CONFIG } = useGlobal()
+  const { NOTION_CONFIG, lang } = useGlobal()
+  const filteredPosts = filterPostsByLang(posts, lang)
+  const currentPostCount = filteredPosts.length
   const POSTS_PER_PAGE = siteConfig('POSTS_PER_PAGE', 12, NOTION_CONFIG)
-  const totalPage = Math.ceil(postCount / POSTS_PER_PAGE)
-  const showPagination = postCount >= POSTS_PER_PAGE
+  const totalPage = Math.ceil(currentPostCount / POSTS_PER_PAGE) || 1
+  const showPagination = currentPostCount > POSTS_PER_PAGE
   const POST_TWO_COLS = siteConfig('HEO_HOME_POST_TWO_COLS', true, CONFIG)
-  if (!posts || posts.length === 0 || page > totalPage) {
+
+  if (!filteredPosts || filteredPosts.length === 0 || page > totalPage) {
     return <BlogPostListEmpty />
   } else {
     return (
@@ -27,9 +31,9 @@ const BlogPostListPage = ({ page = 1, posts = [], postCount, siteInfo }) => {
         {/* 文章列表 */}
         <div
           className={`${POST_TWO_COLS && '2xl:grid 2xl:grid-cols-2'} grid-cols-1 gap-5`}>
-          {posts?.map(post => (
+          {filteredPosts.map(post => (
             <BlogPostCard
-              index={posts.indexOf(post)}
+              index={filteredPosts.indexOf(post)}
               key={post.id}
               post={post}
               siteInfo={siteInfo}

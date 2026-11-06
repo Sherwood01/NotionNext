@@ -3,6 +3,7 @@ import { ArrowSmallRight, PlusSmall } from '@/components/HeroIcons'
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
@@ -219,14 +220,18 @@ function GroupMenu() {
  */
 function TopGroup(props) {
   const { latestPosts, allNavPages, siteInfo } = props
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
   const todayCardRef = useRef()
   function handleMouseLeave() {
-    todayCardRef.current.coverUp()
+    todayCardRef.current?.coverUp()
   }
 
+  // 根据当前语言环境过滤出对应的置顶文章
+  const filteredLatest = filterPostsByLang(latestPosts, lang)
+  const filteredNavPages = filterPostsByLang(allNavPages, lang)
+
   // 获取置顶推荐文章
-  const topPosts = getTopPosts({ latestPosts, allNavPages })
+  const topPosts = getTopPosts({ latestPosts: filteredLatest, allNavPages: filteredNavPages })
 
   return (
     <div

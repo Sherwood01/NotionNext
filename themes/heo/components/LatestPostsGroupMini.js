@@ -1,7 +1,7 @@
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-// import Image from 'next/image'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
 
@@ -14,10 +14,11 @@ import { useRouter } from 'next/router'
 export default function LatestPostsGroupMini({ latestPosts, siteInfo }) {
   // 获取当前路径
   const currentPath = useRouter().asPath
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
   const SUB_PATH = siteConfig('SUB_PATH', '')
+  const filteredLatestPosts = filterPostsByLang(latestPosts, lang)
 
-  return latestPosts ? (
+  return filteredLatestPosts && filteredLatestPosts.length > 0 ? (
     <>
       <div className=' mb-2 px-1 flex flex-nowrap justify-between'>
         <div>
@@ -25,7 +26,7 @@ export default function LatestPostsGroupMini({ latestPosts, siteInfo }) {
           {locale.COMMON.LATEST_POSTS}
         </div>
       </div>
-      {latestPosts.map(post => {
+      {filteredLatestPosts.map(post => {
         const selected =
           currentPath === `${SUB_PATH}/${post.slug}`
         const headerImage = post?.pageCoverThumbnail

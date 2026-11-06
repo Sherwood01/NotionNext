@@ -1,6 +1,7 @@
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { getListByPage } from '@/lib/utils'
+import { filterPostsByLang } from '@/lib/utils/langPostFilter'
 import { useEffect, useRef, useState } from 'react'
 import CONFIG from '../config'
 import BlogPostCard from './BlogPostCard'
@@ -19,14 +20,15 @@ const BlogPostListScroll = ({
   showSummary = siteConfig('HEO_POST_LIST_SUMMARY', null, CONFIG),
   siteInfo
 }) => {
-  const { locale, NOTION_CONFIG } = useGlobal()
+  const { locale, NOTION_CONFIG, lang } = useGlobal()
   const [page, updatePage] = useState(1)
   const POSTS_PER_PAGE = siteConfig('POSTS_PER_PAGE', null, NOTION_CONFIG)
-  const postsToShow = getListByPage(posts, page, POSTS_PER_PAGE)
+  const filteredPosts = filterPostsByLang(posts, lang)
+  const postsToShow = getListByPage(filteredPosts, page, POSTS_PER_PAGE)
 
   let hasMore = false
-  if (posts) {
-    const totalCount = posts.length
+  if (filteredPosts) {
+    const totalCount = filteredPosts.length
     hasMore = page * POSTS_PER_PAGE < totalCount
   }
 
