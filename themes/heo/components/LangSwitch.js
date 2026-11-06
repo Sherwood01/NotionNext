@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 /**
  * HEO 主题多语言切换按钮组件
  * 支持一键切换全站中英文系统界面语言，并持久化存储在 localStorage 中
- * 当在文章详情页时，自动识别并跳转至对应的 -en / -ch 双语文章
+ * 当在文章或单页详情页时，自动识别并跳转至对应的 -en / -ch 双语页面
  * @param {*} props
  * @returns {JSX.Element}
  */
@@ -23,19 +23,29 @@ const LangSwitch = props => {
     const nextLang = isEn ? 'zh-CN' : 'en-US'
     changeLang(nextLang)
 
-    // 如果当前处于文章详情页，且包含双语后缀，自动联动跳转
+    // 如果当前处于详情页，且包含双语后缀或基础单页，自动联动跳转
     const currentPath = router.asPath
     const [pathname, search] = currentPath.split('?')
     const query = search ? `?${search}` : ''
 
-    if (isEn && pathname.includes('-en')) {
-      // 英文 -> 中文：自动跳转到对应的 -ch 页面
-      const newPath = pathname.replace(/-en(\/|$)/, '-ch$1')
-      router.push(`${newPath}${query}`)
-    } else if (!isEn && pathname.includes('-ch')) {
-      // 中文 -> 英文：自动跳转到对应的 -en 页面
-      const newPath = pathname.replace(/-ch(\/|$)/, '-en$1')
-      router.push(`${newPath}${query}`)
+    if (isEn) {
+      // 英文 -> 中文
+      if (pathname.includes('-en')) {
+        const newPath = pathname.replace(/-en(\/|$)/, '-ch$1')
+        router.push(`${newPath}${query}`)
+      } else if (pathname === '/about') {
+        router.push(`/about-ch${query}`)
+      } else if (pathname === '/privacy-policy') {
+        router.push(`/privacy-policy-ch${query}`)
+      } else if (pathname === '/terms-of-service') {
+        router.push(`/terms-of-service-ch${query}`)
+      }
+    } else {
+      // 中文 -> 英文
+      if (pathname.includes('-ch')) {
+        const newPath = pathname.replace(/-ch(\/|$)/, '-en$1')
+        router.push(`${newPath}${query}`)
+      }
     }
   }
 

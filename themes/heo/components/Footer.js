@@ -3,17 +3,30 @@ import CopyRightDate from '@/components/CopyRightDate'
 import PoweredBy from '@/components/PoweredBy'
 import SmartLink from '@/components/SmartLink'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
 import SocialButton from './SocialButton'
 
 /**
  * HEO 主题页脚组件
  * 展示社交链接、版权信息、居中合规政策导航及备案与统计信息
+ * 支持根据当前语言自适应展示中英文政策链接与文本
  * @returns
  */
 const Footer = () => {
   const BEI_AN = siteConfig('BEI_AN')
   const BEI_AN_LINK = siteConfig('BEI_AN_LINK')
   const BIO = siteConfig('BIO')
+  const { lang } = useGlobal()
+
+  const isEn = lang?.toLowerCase().startsWith('en')
+  const aboutLink = isEn ? '/about-en' : '/about-ch'
+  const privacyLink = isEn ? '/privacy-policy-en' : '/privacy-policy-ch'
+  const tosLink = isEn ? '/terms-of-service-en' : '/terms-of-service-ch'
+
+  const aboutText = isEn ? 'About' : '关于我们'
+  const privacyText = isEn ? 'Privacy Policy' : '隐私政策'
+  const tosText = isEn ? 'Terms of Service' : '服务条款'
+
   return (
     <footer className='relative flex-shrink-0 bg-white dark:bg-[#1a191d] justify-center text-center m-auto w-full leading-6  text-gray-600 dark:text-gray-100 text-sm'>
       {/* 颜色过度区 */}
@@ -39,7 +52,7 @@ const Footer = () => {
           <div className='flex gap-x-1 justify-center lg:justify-start'>
             <CopyRightDate />
             <a
-              href={'/about'}
+              href={aboutLink}
               className='underline font-semibold dark:text-gray-300 '>
               {siteConfig('AUTHOR')}
             </a>
@@ -47,27 +60,27 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* 中间合规法律政策导航（面向欧美用户标准英文） */}
+        {/* 中间合规法律政策导航（根据当前语言自适应） */}
         <div
           id='footer-bottom-center'
           className='my-2 lg:my-0 text-center text-xs text-gray-500 dark:text-gray-400'>
           <div className='flex flex-wrap justify-center items-center gap-x-2 gap-y-1'>
             <SmartLink
-              href='/about'
+              href={aboutLink}
               className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
-              About
+              {aboutText}
             </SmartLink>
             <span>•</span>
             <SmartLink
-              href='/privacy-policy'
+              href={privacyLink}
               className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
-              Privacy Policy
+              {privacyText}
             </SmartLink>
             <span>•</span>
             <SmartLink
-              href='/terms-of-service'
+              href={tosLink}
               className='hover:underline hover:text-black dark:hover:text-white transition-colors'>
-              Terms of Service
+              {tosText}
             </SmartLink>
           </div>
         </div>
@@ -92,8 +105,6 @@ const Footer = () => {
             <i className='fas fa-users' />{' '}
             <span className='px-1 busuanzi_value_site_uv'> </span>{' '}
           </span>
-
-          {/* <h1 className='text-xs pt-4 text-light-400 dark:text-gray-400'>{title} {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}</h1> */}
         </div>
       </div>
     </footer>
