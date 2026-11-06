@@ -43,6 +43,7 @@ import SideRight from './components/SideRight'
 import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
+import { getCategoryDisplayName } from '@/lib/utils/category'
 import ArticleExpirationNotice from '@/components/ArticleExpirationNotice'
 
 /**
@@ -423,7 +424,7 @@ const Layout404 = props => {
  */
 const LayoutCategoryIndex = props => {
   const { categoryOptions } = props
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
 
   return (
     <div id='category-outer-wrapper' className='mt-8 px-5 md:px-0'>
@@ -445,7 +446,7 @@ const LayoutCategoryIndex = props => {
                   'group mr-5 mb-5 flex flex-nowrap items-center border bg-white text-2xl rounded-xl dark:hover:text-white px-4 cursor-pointer py-3 hover:text-white hover:bg-indigo-600 transition-all hover:scale-110 duration-150'
                 }>
                 <HashTag className={'w-5 h-5 stroke-gray-500 stroke-2'} />
-                {category.name}
+                {getCategoryDisplayName(category.name, lang)}
                 <div className='bg-[#f1f3f8] ml-1 px-2 rounded-lg group-hover:text-indigo-600 '>
                   {category.count}
                 </div>

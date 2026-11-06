@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Card from './Card'
 import SearchInput from './SearchInput'
 import TagItemMini from './TagItemMini'
+import { getCategoryDisplayName } from '@/lib/utils/category'
 
 /**
  * 搜索页面的导航
@@ -13,7 +14,7 @@ import TagItemMini from './TagItemMini'
 export default function SearchNav(props) {
   const { tagOptions, categoryOptions } = props
   const cRef = useRef(null)
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
   useEffect(() => {
     // 自动聚焦到搜索框
     cRef?.current?.focus()
@@ -41,7 +42,7 @@ export default function SearchNav(props) {
                               }
                           >
                               <i className="mr-4 fas fa-folder" />
-                              {category.name}({category.count})
+                              {getCategoryDisplayName(category.name, lang)}({category.count})
                           </div>
                       </SmartLink>
                   )

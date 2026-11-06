@@ -1,6 +1,7 @@
 import { ChevronDoubleLeft, ChevronDoubleRight } from '@/components/HeroIcons'
 import { useGlobal } from '@/lib/global'
 import SmartLink from '@/components/SmartLink'
+import { getCategoryDisplayName } from '@/lib/utils/category'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 
@@ -11,7 +12,7 @@ import { useRef, useState } from 'react'
  */
 export default function CategoryBar(props) {
   const { categoryOptions, border = true } = props
-  const { locale } = useGlobal()
+  const { locale, lang } = useGlobal()
   const [scrollRight, setScrollRight] = useState(false)
   // 创建一个ref引用
   const categoryBarItemsRef = useRef(null)
@@ -40,7 +41,11 @@ export default function CategoryBar(props) {
         className='scroll-smooth max-w-4xl rounded-lg scroll-hidden flex justify-start flex-nowrap items-center overflow-x-scroll'>
         <MenuItem href='/' name={locale.NAV.INDEX} />
         {categoryOptions?.map((c, index) => (
-          <MenuItem key={index} href={`/category/${c.name}`} name={c.name} />
+          <MenuItem
+            key={index}
+            href={`/category/${c.name}`}
+            name={getCategoryDisplayName(c.name, lang)}
+          />
         ))}
       </div>
 

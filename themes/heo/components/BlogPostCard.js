@@ -1,11 +1,14 @@
 import LazyImage from '@/components/LazyImage'
 import NotionIcon from './NotionIcon'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
+import { getCategoryDisplayName } from '@/lib/utils/category'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 import TagItemMini from './TagItemMini'
 
 const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
+  const { lang } = useGlobal()
   const showPreview =
     siteConfig('HEO_POST_LIST_PREVIEW', null, CONFIG) && post.blockMap
   if (
@@ -69,7 +72,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                   passHref
                   href={`/category/${post.category}`}
                   className='cursor-pointer text-xs font-normal menu-link '>
-                  {post.category}
+                  {getCategoryDisplayName(post.category, lang)}
                 </SmartLink>
               </div>
             )}
