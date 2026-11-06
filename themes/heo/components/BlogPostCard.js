@@ -2,7 +2,7 @@ import LazyImage from '@/components/LazyImage'
 import NotionIcon from './NotionIcon'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 import TagItemMini from './TagItemMini'
@@ -70,7 +70,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                 className={`flex mb-1 items-center ${showPreview ? 'justify-center' : 'justify-start'} hidden md:block flex-wrap dark:text-gray-300 text-gray-600 hover:text-indigo-700 dark:hover:text-yellow-500`}>
                 <SmartLink
                   passHref
-                  href={`/category/${post.category}`}
+                  href={`/category/${getCategorySlug(post.category, lang)}`}
                   className='cursor-pointer text-xs font-normal menu-link '>
                   {getCategoryDisplayName(post.category, lang)}
                 </SmartLink>

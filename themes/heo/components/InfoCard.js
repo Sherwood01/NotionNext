@@ -1,6 +1,7 @@
 import { ArrowRightCircle } from '@/components/HeroIcons'
 import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
 import SmartLink from '@/components/SmartLink'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -14,7 +15,32 @@ import Card from './Card'
  * @returns
  */
 export function InfoCard(props) {
-  const { siteInfo, notice } = props
+  const { siteInfo, notice, notices } = props
+  const { lang } = useGlobal()
+  const isEn = lang?.toLowerCase().startsWith('en')
+
+  // 根据当前语言从多语言公告列表中自适应挑选公告
+  let currentNotice = notice
+  if (Array.isArray(notices) && notices.length > 0) {
+    if (isEn) {
+      currentNotice =
+        notices.find(
+          n =>
+            n?.title?.toLowerCase().includes('notice') ||
+            n?.slug?.toLowerCase().includes('notice') ||
+            !/[\u4e00-\u9fa5]/.test(n?.title || '')
+        ) || notices[0]
+    } else {
+      currentNotice =
+        notices.find(
+          n =>
+            n?.title?.includes('公告') ||
+            n?.slug?.includes('notice-ch') ||
+            /[\u4e00-\u9fa5]/.test(n?.title || '')
+        ) || notices[0]
+    }
+  }
+
   const router = useRouter()
   // 在文章详情页特殊处理
   const isSlugPage = router.pathname.indexOf('/[prefix]') === 0
@@ -43,7 +69,7 @@ export function InfoCard(props) {
       <h2 className='text-3xl font-extrabold mt-3'>{siteConfig('AUTHOR')}</h2>
 
       {/* 公告栏 */}
-      <Announcement post={notice} style={{ color: 'white !important' }} />
+      <Announcement post={currentNotice} style={{ color: 'white !important' }} />
 
       <div className='flex justify-between'>
         <div className='flex space-x-3  hover:text-black dark:hover:text-white'>

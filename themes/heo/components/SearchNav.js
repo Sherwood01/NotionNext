@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import Card from './Card'
 import SearchInput from './SearchInput'
 import TagItemMini from './TagItemMini'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 
 /**
  * 搜索页面的导航
@@ -33,7 +33,7 @@ export default function SearchNav(props) {
                   return (
                       <SmartLink
                           key={category.name}
-                          href={`/category/${category.name}`}
+                          href={`/category/${getCategorySlug(category.name, lang)}`}
                           passHref
                           legacyBehavior>
                           <div

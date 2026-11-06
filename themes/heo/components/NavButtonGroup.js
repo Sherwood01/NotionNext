@@ -1,6 +1,6 @@
 import SmartLink from '@/components/SmartLink'
 import { useGlobal } from '@/lib/global'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 
 /**
  * 首页导航大按钮组件
@@ -21,7 +21,7 @@ const NavButtonGroup = (props) => {
           <SmartLink
             key={`${category.name}`}
             title={`${getCategoryDisplayName(category.name, lang)}`}
-            href={`/category/${category.name}`}
+            href={`/category/${getCategorySlug(category.name, lang)}`}
             passHref
             className='text-center w-full sm:w-4/5 md:mx-6 md:w-40 md:h-14 lg:h-20 h-14 justify-center items-center flex border-2 cursor-pointer rounded-lg glassmorphism hover:bg-white hover:text-black duration-200 font-bold hover:scale-105 transform'>
                 {getCategoryDisplayName(category.name, lang)}

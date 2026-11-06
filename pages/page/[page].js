@@ -41,12 +41,8 @@ export async function getStaticProps({ params: { page }, locale }) {
   const allPosts = allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
   )
-  const POSTS_PER_PAGE = siteConfig('POSTS_PER_PAGE', 12, props?.NOTION_CONFIG)
-  // 处理分页
-  props.posts = allPosts.slice(
-    POSTS_PER_PAGE * (page - 1),
-    POSTS_PER_PAGE * page
-  )
+  // 为保证多语言单库下客户端过滤文章完整性，传递全量发布文章由前端分页组件根据语言切片
+  props.posts = allPosts
   props.page = page
 
   // 处理预览

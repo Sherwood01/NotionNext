@@ -1,12 +1,13 @@
 import { ChevronDoubleLeft, ChevronDoubleRight } from '@/components/HeroIcons'
 import { useGlobal } from '@/lib/global'
 import SmartLink from '@/components/SmartLink'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug, getCategoryRawName } from '@/lib/utils/category'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 
 /**
  * 博客列表上方嵌入条
+ * 支持中英文双语分类 Slug 链接与高亮
  * @param {*} props
  * @returns
  */
@@ -40,13 +41,18 @@ export default function CategoryBar(props) {
         ref={categoryBarItemsRef}
         className='scroll-smooth max-w-4xl rounded-lg scroll-hidden flex justify-start flex-nowrap items-center overflow-x-scroll'>
         <MenuItem href='/' name={locale.NAV.INDEX} />
-        {categoryOptions?.map((c, index) => (
-          <MenuItem
-            key={index}
-            href={`/category/${c.name}`}
-            name={getCategoryDisplayName(c.name, lang)}
-          />
-        ))}
+        {categoryOptions?.map((c, index) => {
+          const categorySlug = getCategorySlug(c.name, lang)
+          return (
+            <MenuItem
+              key={index}
+              href={`/category/${categorySlug}`}
+              name={getCategoryDisplayName(c.name, lang)}
+              rawName={c.name}
+              slug={categorySlug}
+            />
+          )
+        })}
       </div>
 
       <div id='category-bar-next' className='flex items-center justify-center'>
@@ -71,14 +77,23 @@ export default function CategoryBar(props) {
 }
 
 /**
- * 按钮
+ * 分类按钮
  * @param {*} param0
  * @returns
  */
-const MenuItem = ({ href, name }) => {
+const MenuItem = ({ href, name, rawName, slug }) => {
   const router = useRouter()
   const { category } = router.query
-  const selected = category === name
+  const decodedCategory = category ? decodeURIComponent(category) : ''
+  const currentRaw = getCategoryRawName(decodedCategory)
+
+  // 支持原始中文名、slug 或展示名任意一种匹配时高亮
+  const selected =
+    decodedCategory === name ||
+    decodedCategory === rawName ||
+    decodedCategory === slug ||
+    (rawName && currentRaw === rawName)
+
   return (
     <div
       className={`whitespace-nowrap mr-2 duration-200 transition-all font-bold px-2 py-0.5 rounded-md text-gray-900 dark:text-white hover:text-white hover:bg-indigo-600 dark:hover:bg-yellow-600 ${selected ? 'text-white bg-indigo-600 dark:bg-yellow-600' : ''}`}>

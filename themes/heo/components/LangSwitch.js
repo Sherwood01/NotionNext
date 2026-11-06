@@ -1,10 +1,11 @@
 import { useGlobal } from '@/lib/global'
+import { convertCategoryPath } from '@/lib/utils/category'
 import { useRouter } from 'next/router'
 
 /**
  * HEO 主题多语言切换按钮组件
  * 支持一键切换全站中英文系统界面语言，并持久化存储在 localStorage 中
- * 当在文章或单页详情页时，自动识别并跳转至对应的 -en / -ch 双语页面
+ * 当处于分类页、文章或单页详情页时，自动识别并跳转至对应的中英文对应 URL
  * @param {*} props
  * @returns {JSX.Element}
  */
@@ -23,21 +24,29 @@ const LangSwitch = props => {
     const nextLang = isEn ? 'zh-CN' : 'en-US'
     changeLang(nextLang)
 
-    // 如果当前处于详情页，且包含双语后缀或基础单页，自动联动跳转
     const currentPath = router.asPath
     const [pathname, search] = currentPath.split('?')
     const query = search ? `?${search}` : ''
 
+    // 1. 分类路径双语自动对换（例如 /category/技术分享 <-> /category/engineering）
+    const targetIsEn = !isEn
+    const convertedCatPath = convertCategoryPath(pathname, targetIsEn)
+    if (convertedCatPath) {
+      router.push(`${convertedCatPath}${query}`)
+      return
+    }
+
+    // 2. 详情页与单页联动跳转
     if (isEn) {
       // 英文 -> 中文
       if (pathname.includes('-en')) {
         const newPath = pathname.replace(/-en(\/|$)/, '-ch$1')
         router.push(`${newPath}${query}`)
-      } else if (pathname === '/about') {
+      } else if (pathname === '/about' || pathname === '/about-en') {
         router.push(`/about-ch${query}`)
-      } else if (pathname === '/privacy-policy') {
+      } else if (pathname === '/privacy-policy' || pathname === '/privacy-policy-en') {
         router.push(`/privacy-policy-ch${query}`)
-      } else if (pathname === '/terms-of-service') {
+      } else if (pathname === '/terms-of-service' || pathname === '/terms-of-service-en') {
         router.push(`/terms-of-service-ch${query}`)
       }
     } else {
@@ -45,6 +54,12 @@ const LangSwitch = props => {
       if (pathname.includes('-ch')) {
         const newPath = pathname.replace(/-ch(\/|$)/, '-en$1')
         router.push(`${newPath}${query}`)
+      } else if (pathname === '/about-ch') {
+        router.push(`/about-en${query}`)
+      } else if (pathname === '/privacy-policy-ch') {
+        router.push(`/privacy-policy-en${query}`)
+      } else if (pathname === '/terms-of-service-ch') {
+        router.push(`/terms-of-service-en${query}`)
       }
     }
   }

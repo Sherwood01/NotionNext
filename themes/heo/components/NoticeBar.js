@@ -12,34 +12,32 @@ export function NoticeBar() {
   const { locale, lang } = useGlobal()
   const isEn = lang?.toLowerCase().startsWith('en')
 
-  let notices = siteConfig('HEO_NOTICE_BAR', null, CONFIG)
-  if (typeof notices === 'string') {
+  // 双语默认公告配置
+  const enNotices = [
+    {
+      title: "Welcome to Sunmore's Blog — AI insights & digital workflows",
+      url: '/about-en'
+    }
+  ]
+
+  const chNotices = [
+    {
+      title: '欢迎访问 Sunmore 博客 — 探索前沿 AI 工作流与数字化实战经验',
+      url: '/about-ch'
+    }
+  ]
+
+  let customNotices = siteConfig('HEO_NOTICE_BAR', null, CONFIG)
+  if (typeof customNotices === 'string') {
     try {
-      notices = JSON.parse(notices)
+      customNotices = JSON.parse(customNotices)
     } catch (e) {
-      notices = null
+      customNotices = null
     }
   }
 
-  // 双语默认公告配置
-  const defaultNotices = isEn
-    ? [
-        {
-          title: "Welcome to Sunmore's Blog — AI insights & digital workflows",
-          url: '/about-en'
-        }
-      ]
-    : [
-        {
-          title: '欢迎访问 Sunmore 博客 — 探索前沿 AI 工作流与数字化实战经验',
-          url: '/about-ch'
-        }
-      ]
-
-  const displayNotices = (notices && notices.length > 0) ? notices.map(item => ({
-    ...item,
-    url: isEn ? (item.url === '/about' ? '/about-en' : item.url) : (item.url === '/about' ? '/about-ch' : item.url)
-  })) : defaultNotices
+  // 默认根据当前语言选择对应语言的通知
+  const displayNotices = isEn ? enNotices : chNotices
 
   return (
     <div className='max-w-[86rem] w-full mx-auto flex h-12 mb-4 px-5 font-bold'>

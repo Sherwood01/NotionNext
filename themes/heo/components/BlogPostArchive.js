@@ -2,6 +2,7 @@ import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { filterPostsByLang } from '@/lib/utils/langPostFilter'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 import SmartLink from '@/components/SmartLink'
 import CONFIG from '../config'
 import TagItemMini from './TagItemMini'
@@ -67,9 +68,9 @@ const BlogPostArchive = ({ posts = [], archiveTitle, siteInfo }) => {
                         className={`flex items-center ${showPreview ? 'justify-center' : 'justify-start'} hidden md:block flex-wrap dark:text-gray-500 text-gray-600 `}>
                         <SmartLink
                           passHref
-                          href={`/category/${post.category}`}
+                          href={`/category/${getCategorySlug(post.category, lang)}`}
                           className='cursor-pointer text-xs font-normal menu-link hover:text-indigo-700  dark:text-gray-600 transform'>
-                          {post.category}
+                          {getCategoryDisplayName(post.category, lang)}
                         </SmartLink>
                       </div>
                     )}

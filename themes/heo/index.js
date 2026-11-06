@@ -43,7 +43,7 @@ import SideRight from './components/SideRight'
 import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 import ArticleExpirationNotice from '@/components/ArticleExpirationNotice'
 
 /**
@@ -438,7 +438,7 @@ const LayoutCategoryIndex = props => {
           return (
             <SmartLink
               key={category.name}
-              href={`/category/${category.name}`}
+              href={`/category/${getCategorySlug(category.name, lang)}`}
               passHref
               legacyBehavior>
               <div

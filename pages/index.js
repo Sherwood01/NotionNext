@@ -35,15 +35,8 @@ export async function getStaticProps(req) {
     page => page.type === 'Post' && page.status === 'Published'
   )
 
-  // 处理分页
-  if (siteConfig('POST_LIST_STYLE') === 'scroll') {
-    // 滚动列表默认给前端返回所有数据
-  } else if (siteConfig('POST_LIST_STYLE') === 'page') {
-    props.posts = props.posts?.slice(
-      0,
-      siteConfig('POSTS_PER_PAGE', 12, props?.NOTION_CONFIG)
-    )
-  }
+  // 为保证多语言单库下客户端过滤文章完整性，不在此处提前截断文章列表
+  // 由前端列表组件根据当前语言过滤后再执行分页展示
 
   // 预览文章内容
   if (siteConfig('POST_LIST_PREVIEW', false, props?.NOTION_CONFIG)) {

@@ -1,6 +1,6 @@
 import SmartLink from '@/components/SmartLink'
 import { useGlobal } from '@/lib/global'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 
 const CategoryGroup = ({ currentCategory, categories }) => {
   const { lang } = useGlobal()
@@ -14,7 +14,7 @@ const CategoryGroup = ({ currentCategory, categories }) => {
         return (
           <SmartLink
             key={category.name}
-            href={`/category/${category.name}`}
+            href={`/category/${getCategorySlug(category.name, lang)}`}
             passHref
             className={(selected
               ? 'hover:text-white dark:hover:text-white bg-indigo-600 text-white '

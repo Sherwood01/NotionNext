@@ -7,7 +7,7 @@ import { formatDateFmt } from '@/lib/utils/formatDate'
 import SmartLink from '@/components/SmartLink'
 import WavesArea from './WavesArea'
 import { useGlobal } from '@/lib/global'
-import { getCategoryDisplayName } from '@/lib/utils/category'
+import { getCategoryDisplayName, getCategorySlug } from '@/lib/utils/category'
 
 /**
  * 文章页头
@@ -64,7 +64,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
             {post.category && (
               <>
                 <SmartLink
-                  href={`/category/${post.category}`}
+                  href={`/category/${getCategorySlug(post.category, lang)}`}
                   className='mr-4'
                   passHref
                   legacyBehavior>
