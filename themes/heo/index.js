@@ -44,6 +44,7 @@ import CONFIG from './config'
 import { Style } from './style'
 import AISummary from '@/components/AISummary'
 import { getCategoryDisplayName } from '@/lib/utils/category'
+import { syncPageTranslation } from '@/lib/plugins/translate'
 import ArticleExpirationNotice from '@/components/ArticleExpirationNotice'
 
 /**
@@ -250,7 +251,7 @@ const LayoutArchive = props => {
  */
 const LayoutSlug = props => {
   const { post, lock, validPassword } = props
-  const { locale, fullWidth } = useGlobal()
+  const { locale, fullWidth, lang } = useGlobal()
 
   const [hasCode, setHasCode] = useState(false)
 
@@ -258,6 +259,16 @@ const LayoutSlug = props => {
     const hasCode = document.querySelectorAll('[class^="language-"]').length > 0
     setHasCode(hasCode)
   }, [])
+
+  // 文章详情页：当语言为英文或切换语言时，自动同步文章正文翻译
+  useEffect(() => {
+    if (post && isBrowser) {
+      const timer = setTimeout(() => {
+        syncPageTranslation(lang)
+      }, 350)
+      return () => clearTimeout(timer)
+    }
+  }, [post, lang])
 
   const commentEnable =
     siteConfig('COMMENT_TWIKOO_ENV_ID') ||
