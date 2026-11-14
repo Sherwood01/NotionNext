@@ -37,6 +37,14 @@ export async function getStaticProps({ params: { tag }, locale }) {
 
   props.tag = tag
   delete props.allPages
+  delete props.block
+  delete props.rawMetadata
+  delete props.pageIds
+  delete props.schema
+  delete props.collection
+  delete props.collectionQuery
+  delete props.collectionView
+  delete props.viewIds
   return {
     props,
     revalidate: process.env.EXPORT

@@ -41,9 +41,9 @@ const SmartLink = ({ href, children, ...rest }) => {
     )
   }
 
-  // 内部链接（可为对象形式）
+  // 内部链接（默认关闭自动预取 prefetch={false}，避免视口出现大量链接时触发并发 ISR 数据写入）
   return (
-    <Link href={href} {...rest}>
+    <Link href={href} prefetch={false} {...rest}>
       {children}
     </Link>
   )

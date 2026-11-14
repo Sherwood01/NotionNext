@@ -126,13 +126,15 @@ export async function getStaticPaths() {
     }
   }
 
-  // ISR 模式：预生成最新10篇，其余按需渲染
-  const tops = getPriorityPages(allPages)
+  // ISR 模式：全量预生成现有已发布的单页与文章，彻底消除首次访问时的运行时 ISR 写入
+  const validPages = allPages?.filter(row => row.status === 'Published' && checkSlugHasNoSlash(row)) || []
 
   return {
-    paths: tops
-      .filter(row => checkSlugHasNoSlash(row))
-      .map(row => ({ params: { prefix: row.slug } })),
+    paths: validPages.map(row => ({
+      params: {
+        prefix: row.slug.startsWith('/') ? row.slug.substring(1) : row.slug
+      }
+    })),
     fallback: 'blocking'
   }
 }
