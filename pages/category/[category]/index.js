@@ -41,14 +41,6 @@ export async function getStaticProps({ params: { category }, locale }) {
 
   // 为保证单库多语言客户端过滤完整性，将全部该分类文章传给前端组件切片
   delete props.allPages
-  delete props.block
-  delete props.rawMetadata
-  delete props.pageIds
-  delete props.schema
-  delete props.collection
-  delete props.collectionQuery
-  delete props.collectionView
-  delete props.viewIds
 
   props = { ...props, category: rawCategory, categorySlug: category }
 

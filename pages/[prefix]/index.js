@@ -13,7 +13,6 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { isExport } from '@/lib/utils/buildMode'
-import { getPriorityPages, prefetchAllBlockMaps } from '@/lib/build/prefetch'
 
 /**
  * 根据notion的slug访问页面
@@ -117,6 +116,7 @@ export async function getStaticPaths() {
 
   // Export 模式：全量预生成
   if (isExport()) {
+    const { prefetchAllBlockMaps } = await import('@/lib/build/prefetch')
     await prefetchAllBlockMaps(allPages)
     return {
       paths: allPages

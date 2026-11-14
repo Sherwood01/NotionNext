@@ -4,7 +4,6 @@ import { fetchGlobalAllData, resolvePostProps } from '@/lib/db/SiteDataApi'
 import Slug from '..'
 import { checkSlugHasOneSlash, checkSlugHasNoSlash } from '@/lib/utils/post'
 import { isExport } from '@/lib/utils/buildMode'
-import { prefetchAllBlockMaps } from '@/lib/build/prefetch'
 
 /**
  * 根据notion的slug访问页面
@@ -54,6 +53,7 @@ export async function getStaticPaths() {
 
   // Export 模式全量预生成并关闭 fallback
   if (isExport()) {
+    const { prefetchAllBlockMaps } = await import('@/lib/build/prefetch')
     await prefetchAllBlockMaps(allPages)
     return {
       paths,
