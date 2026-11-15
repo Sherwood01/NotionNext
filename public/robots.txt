@@ -1,6 +1,13 @@
-# *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /*?*
+Disallow: /tag/
+Disallow: /zh-CN/tag/
+Disallow: /category/
+Disallow: /zh-CN/category/
+Disallow: /search/
+Disallow: /zh-CN/search/
 
 # Allow Major AI Crawlers
 User-agent: GPTBot
@@ -21,9 +28,5 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Host
-Host: https://notion.xwqin.com
-
 # Sitemaps
 Sitemap: https://notion.xwqin.com/sitemap.xml
-
