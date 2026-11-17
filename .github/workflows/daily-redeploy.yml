@@ -2,14 +2,22 @@ name: Daily Auto Redeploy
 
 on:
   schedule:
-    # 每天北京时间 13:20 运行（UTC 05:20）
-    - cron: "20 5 * * *"
+    # 每天北京时间 14:10 运行（UTC 06:10），测试完成后可改回 8:30 (30 0 * * *)
+    - cron: "10 6 * * *"
   workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   redeploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Trigger Vercel Deploy Hook
         env:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
@@ -21,3 +29,16 @@ jobs:
           echo "正在触发 Vercel 重新构建部署..."
           curl -X POST "$VERCEL_DEPLOY_HOOK"
           echo "触发完成！"
+
+      - name: Update keepalive timestamp
+        run: |
+          current_time=$(date "+%Y-%m-%d %H:%M:%S")
+          echo "Last active: $current_time" > .github/keepalive.txt
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Sherwood1"
+          git config --global user.email "137753051@qq.com"
+          git add .github/keepalive.txt
+          git commit -m "chore: auto redeploy heartbeat [skip ci]" || echo "No changes to commit"
+          git push
