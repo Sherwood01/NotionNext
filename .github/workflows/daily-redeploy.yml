@@ -2,9 +2,8 @@ name: Daily Auto Redeploy
 
 on:
   schedule:
-    # 每天国际标准时间 UTC 00:30 运行（对应北京时间当天早上 08:30）
-    - cron: '30 0 * * *'
-  # 允许在 GitHub Actions 页面随时手动点击测试运行
+    # 每天北京时间 13:20 运行（UTC 05:20）
+    - cron: "20 5 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,12 +12,12 @@ jobs:
     steps:
       - name: Trigger Vercel Deploy Hook
         env:
-          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
-          if [ -z "$DEPLOY_HOOK" ]; then
-            echo "错误: 未找到 VERCEL_DEPLOY_HOOK，请前往 GitHub 仓库 Settings -> Secrets 中配置！"
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "错误: 未找到 VERCEL_DEPLOY_HOOK，请检查 Secrets 配置！"
             exit 1
           fi
           echo "正在触发 Vercel 重新构建部署..."
-          curl -X POST "$DEPLOY_HOOK"
-          echo "触发成功！"
+          curl -X POST "$VERCEL_DEPLOY_HOOK"
+          echo "触发完成！"
